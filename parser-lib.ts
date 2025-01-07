@@ -112,3 +112,6 @@ export const join = <T, S>(
             )
         )
     ).union(minTimes > 0 ? Parser.fail() : Parser.value([]));
+
+export const lazy = <T>(get: () => Parser<T>) =>
+    Parser.value(null).flatMap((_) => get());
